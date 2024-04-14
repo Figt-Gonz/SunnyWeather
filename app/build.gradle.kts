@@ -17,6 +17,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("config") {
+            storeFile = file("SunnyWeather.jks")
+            storePassword = "wjtlmzhl"
+            keyAlias = "gongzhengdev"
+            keyPassword = "wjtlmzhl"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -24,6 +33,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("config")
         }
     }
     compileOptions {
